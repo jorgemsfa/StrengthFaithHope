@@ -7,12 +7,11 @@ using System.Text;
 namespace StrengthFaithHope.Domain.Commands
 {
     public class CreateMessageCommand:ICommand
-    {
-       
-        public String Sentence { get; set; }
-
-     
+    {       
+        public String Sentence { get; set; }     
         public Guid TypeId { get; set; }
+        public String Title { get; set; }
+        public Guid Icon { get; set; }
 
     }
 }

@@ -9,9 +9,9 @@ namespace UnitTests.Domain.MessageContext
         [TestMethod]
         public void Should_Be_Created()
         {
-            Type type = new Type("esperança");
+            Type type = new Type("hope", "done_outline");
 
-            Message message = new Message("Sometimes good things fall apart so better things can fall together", type.Id);
+            Message message = new Message("Sometimes good things fall apart so better things can fall together", type.Id, "Sometimes...");
 
             Assert.IsInstanceOfType(message, typeof(Message));
         }

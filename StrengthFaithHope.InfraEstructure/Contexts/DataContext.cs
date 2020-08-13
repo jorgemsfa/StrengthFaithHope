@@ -12,11 +12,12 @@ namespace StrengthFaithHope.Infra.Contexts
         }
 
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Type> Types { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Message>().ToTable("Message");           
-
+            modelBuilder.Entity<Message>().ToTable("Message");
+            modelBuilder.Entity<Message>().ToTable("Type");
         }
     }
 }

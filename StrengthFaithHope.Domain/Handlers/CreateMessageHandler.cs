@@ -18,11 +18,11 @@ namespace StrengthFaithHope.Domain.Handlers
         }
         public ICommandResult Handler(CreateMessageCommand command)
         {
-            var message = new Message(command.Sentence, command.TypeId);
+            var message = new Message(command.Sentence, command.TypeId, command.Title);
 
-            _messageRepository.Create(message);
+           Boolean result = _messageRepository.Create(message);
 
-            return new CommandResult(true);
+            return new CommandResult(result);
 
         }
     }

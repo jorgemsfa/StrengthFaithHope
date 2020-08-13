@@ -10,6 +10,6 @@ namespace StrengthFaithHope.Domain.Repositories
     {
         IEnumerable<Message> GetAll();
 
-        void Create(Message message);
+        Boolean Create(Message message);
     }
 }

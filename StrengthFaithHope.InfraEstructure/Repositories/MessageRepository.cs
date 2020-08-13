@@ -27,10 +27,14 @@ namespace StrengthFaithHope.Infra.Repositories
               
         }
 
-        public void Create(Message message)
+        public Boolean Create(Message message)
         {
             _dataContext.Add(message);
-            _dataContext.SaveChanges();
+
+           int saved = _dataContext.SaveChanges();
+
+           return saved == 0 ? true : false;
+
         }
     }
 }
