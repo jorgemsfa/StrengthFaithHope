@@ -20,12 +20,18 @@ namespace StrengthFaithHope.Infra.Repositories
         {
             _dataContext.Add(type);
            int saved= _dataContext.SaveChanges();
-            return saved == 0 ? true : false;
+
+           return saved == 1 ? true : false;
         }
 
         public IEnumerable<Type> GetAll()
         {
-            return _dataContext.Types.AsNoTracking();
+            return _dataContext.Type.AsNoTracking();
+        }
+
+        public Type GetById(Guid typeId)
+        {
+            return _dataContext.Find<Type>(typeId);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using StrengthFaithHope.Domain.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Type = StrengthFaithHope.Domain.MessageContext.Type;
 
@@ -38,6 +39,11 @@ namespace UnitTests.Mocks
         public IEnumerable<Type> GetAll()
         {
             return _types;
+        }
+
+        public Type GetById(Guid typeId)
+        {
+            return _types.AsQueryable().FirstOrDefault(r => r.TypeId == typeId);
         }
     }
 }

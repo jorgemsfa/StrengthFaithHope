@@ -29,7 +29,12 @@ namespace StrengthFaithHope.API
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
 
             services.AddTransient<IMessageRepository,MessageRepository>();
+            services.AddTransient<ITypeRepository, TypeRepository>();
+
+
             services.AddTransient<CreateMessageHandler, CreateMessageHandler>();
+            services.AddTransient<CreateTypeHandler, CreateTypeHandler>();
+
 
 
         }

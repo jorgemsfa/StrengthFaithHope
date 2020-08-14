@@ -11,5 +11,7 @@ namespace StrengthFaithHope.Domain.Repositories
 
         Boolean Create(Type type);
         IEnumerable<Type> GetAll();
+        Type GetById(Guid typeId);
+
     }
 }

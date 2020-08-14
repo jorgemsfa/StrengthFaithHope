@@ -22,7 +22,7 @@ namespace StrengthFaithHope.Infra.Repositories
 
         public IEnumerable<Message> GetAll()
         {
-            return _dataContext.Messages
+            return _dataContext.Message
                .AsNoTracking();             
               
         }
@@ -33,7 +33,7 @@ namespace StrengthFaithHope.Infra.Repositories
 
            int saved = _dataContext.SaveChanges();
 
-           return saved == 0 ? true : false;
+           return saved == 1 ? true : false;
 
         }
     }

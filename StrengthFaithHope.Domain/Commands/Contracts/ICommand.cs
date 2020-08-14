@@ -6,5 +6,6 @@ namespace StrengthFaithHope.Domain.Commands.Contracts
 {
     public interface ICommand
     {
+       
     }
 }

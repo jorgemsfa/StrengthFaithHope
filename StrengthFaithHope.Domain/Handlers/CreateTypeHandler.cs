@@ -1,4 +1,6 @@
-﻿using StrengthFaithHope.Domain.Commands;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using StrengthFaithHope.Domain.Commands;
 using StrengthFaithHope.Domain.Commands.Contracts;
 using StrengthFaithHope.Domain.Handlers.Contracts;
 using StrengthFaithHope.Domain.MessageContext;
@@ -10,7 +12,7 @@ using Type = StrengthFaithHope.Domain.MessageContext.Type;
 
 namespace StrengthFaithHope.Domain.Handlers
 {
-    public class CreateTypeHandler : IHandler<CreateTypeCommand>
+    public class CreateTypeHandler : AbstractValidator<Type>, IHandler<CreateTypeCommand>
     {
         private ITypeRepository _typeRepository;
         public CreateTypeHandler(ITypeRepository typeRepository)
@@ -18,12 +20,15 @@ namespace StrengthFaithHope.Domain.Handlers
             _typeRepository = typeRepository;
         }
     
-        public ICommandResult Handler(CreateTypeCommand command)
+        public ValidationResult Handler(CreateTypeCommand command)
         {
             Type type = new Type(command.Definicion, command.Icon);
+
             Boolean result= _typeRepository.Create(type);
 
-            return new CommandResult(result);
+             return Validate(type);
         }
+
+      
     }
 }

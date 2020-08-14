@@ -4,26 +4,37 @@ using StrengthFaithHope.Domain.Handlers.Contracts;
 using StrengthFaithHope.Domain.MessageContext;
 using StrengthFaithHope.Domain.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using FluentValidation;
+using Type = StrengthFaithHope.Domain.MessageContext.Type;
+using FluentValidation.Results;
+using System.Data;
+using FluentValidation.TestHelper;
 
 namespace StrengthFaithHope.Domain.Handlers
 {
-    public class CreateMessageHandler : IHandler<CreateMessageCommand>
+    public class CreateMessageHandler : AbstractValidator<Message>, IHandler<CreateMessageCommand> 
     {
         private IMessageRepository _messageRepository;
-        public CreateMessageHandler(IMessageRepository messageRepository)
+        private ITypeRepository _typeRepository;
+
+        public CreateMessageHandler(IMessageRepository messageRepository, ITypeRepository typeRepository)
         {
             _messageRepository = messageRepository;
+            _typeRepository = typeRepository;
         }
-        public ICommandResult Handler(CreateMessageCommand command)
+        public ValidationResult Handler(CreateMessageCommand command)
         {
-            var message = new Message(command.Sentence, command.TypeId, command.Title);
+            Message message = new Message(command.Sentence, command.TypeId, command.Title);
 
+            Type type = _typeRepository.GetById(command.TypeId);
+
+            RuleFor(m => m.Type).NotNull().WithMessage("The Type is empty or nullable");
+
+            //1-I need implement a validation to repository
            Boolean result = _messageRepository.Create(message);
-
-            return new CommandResult(result);
-
+           
+            return Validate(message);
         }
+
     }
 }

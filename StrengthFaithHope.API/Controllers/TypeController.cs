@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using StrengthFaithHope.Domain.Commands;
 using StrengthFaithHope.Domain.Commands.Contracts;
@@ -13,12 +14,12 @@ using Type = StrengthFaithHope.Domain.MessageContext.Type;
 namespace StrengthFaithHope.API.Controllers
 {
     [ApiController]
-    [Route("V1/StrengthFaithHope")]
+    [Route("V1/StrengthFaithHope/[controller]")]
     public class TypeController : Controller
     {
         [Route("")]
         [HttpPost]
-       public ICommandResult Create(
+       public ValidationResult Create(
            [FromBody] CreateTypeCommand createTypeCommand,
            [FromServices] CreateTypeHandler createTypeHandler)  
         {

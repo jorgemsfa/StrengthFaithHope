@@ -34,5 +34,15 @@ namespace UnitTests.Domain.Queries
 
             Assert.IsTrue(_types.Count() > 0);
         }
+
+        [TestMethod]
+        public void Should_Get_Type_By_Id_Return_Type_Object()
+        {
+            Type typeAux = _typeRepository.GetAll().FirstOrDefault();
+
+            Type type = _typeRepository.GetById(typeAux.TypeId);
+
+            Assert.IsInstanceOfType(type, typeof(Type));
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using StrengthFaithHope.Domain.Commands;
@@ -13,12 +14,14 @@ using System.Linq;
 using System.Runtime.Intrinsics;
 using System.Threading.Tasks;
 
+using Type = StrengthFaithHope.Domain.MessageContext.Type;
+
 namespace StrengthFaithHope.API.Controllers
 {
 
     [ApiController]
 
-    [Route("V1/StrengthFaithHope")]   
+    [Route("V1/StrengthFaithHope/[controller]")]   
     public class MessageController: ControllerBase
     {
         [Route("")]
@@ -28,9 +31,11 @@ namespace StrengthFaithHope.API.Controllers
             return messageRepository.GetAll();
         }
 
+     
+
         [Route("")]
         [HttpPost]
-        public ICommandResult Create( 
+        public ValidationResult Create( 
             [FromBody] CreateMessageCommand createMessageCommand,
             [FromServices]CreateMessageHandler createMessageHandler)
         {

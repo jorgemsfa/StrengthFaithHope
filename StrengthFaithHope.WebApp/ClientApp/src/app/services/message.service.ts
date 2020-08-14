@@ -18,7 +18,7 @@ export class MessageService {
       })
     };
 
-    return this.httpClient.get<Message[]>('/V1/StrengthFaithHope');
+    return this.httpClient.get<Message[]>('/V1/StrengthFaithHope/message');
   }
 }
 
