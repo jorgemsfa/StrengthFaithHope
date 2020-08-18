@@ -6,6 +6,7 @@ using System.Linq;
 using StrengthFaithHope.Domain.Repositories;
 using StrengthFaithHope.Domain.ViewModels;
     using Type = StrengthFaithHope.Domain.MessageContext.Type;
+using Microsoft.AspNetCore.Mvc;
 
 namespace StrengthFaithHope.Domain.Queries
 {
@@ -31,6 +32,7 @@ namespace StrengthFaithHope.Domain.Queries
             return new TypeViewModel(type.TypeId, type.Definicion, type.Icon);
         }
 
+      
         private IList<TypeViewModel> GenerateTypeViewModels(IList<Type> types)
         {
             IList<TypeViewModel> typeViewModels = new List<TypeViewModel>();

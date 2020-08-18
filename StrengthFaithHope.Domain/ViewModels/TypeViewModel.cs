@@ -12,7 +12,6 @@ namespace StrengthFaithHope.Domain.ViewModels
             Definicion = definicion;
             Icon = icon;
         }
-
         public Guid TypeId { get; set; }
         public String Definicion { get; set; }
         public String Icon { get; set; }

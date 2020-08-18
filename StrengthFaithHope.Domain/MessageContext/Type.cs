@@ -7,10 +7,10 @@ using System.Text;
 
 namespace StrengthFaithHope.Domain.MessageContext
 {
-    public class Type:AbstractValidator<Type>
+    public class Type : AbstractValidator<Type>
     {
 
-        public Type(String definicion,String icon)
+        public Type(String definicion, String icon)
         {
             Definicion = definicion;
             Icon = icon;
@@ -25,5 +25,6 @@ namespace StrengthFaithHope.Domain.MessageContext
         public String Definicion { get; private set; }
         public String Icon { get; private set; }
         public IEnumerable<Message> Message { get; private set; }
+      
     }
-}
+ }

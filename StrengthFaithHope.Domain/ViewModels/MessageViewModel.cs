@@ -17,9 +17,9 @@ namespace StrengthFaithHope.Domain.ViewModels
         }
 
         public Guid MessageId { get;  set; }
-        public String Sentence { get;  set; }
+        public String Sentence { get; set; }
+        public String Title { get; set; }
         public TypeViewModel TypeViewModel { get;  set; }
-        public String Title { get;  set; }
 
     }
 
