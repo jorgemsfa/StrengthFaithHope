@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using StrengthFaithHope.Domain.Commands;
 using StrengthFaithHope.Domain.Commands.Contracts;
 using StrengthFaithHope.Domain.Handlers;
 using StrengthFaithHope.Domain.Repositories;
 using Type = StrengthFaithHope.Domain.MessageContext.Type;
+using FluentValidation.Results;
+using StrengthFaithHope.Domain.ViewModels;
+using StrengthFaithHope.Domain.Queries;
 
 namespace StrengthFaithHope.API.Controllers
 {
@@ -19,18 +21,18 @@ namespace StrengthFaithHope.API.Controllers
     {
         [Route("")]
         [HttpPost]
-       public ValidationResult Create(
+        public ValidationResult Create(
            [FromBody] CreateTypeCommand createTypeCommand,
-           [FromServices] CreateTypeHandler createTypeHandler)  
+           [FromServices] CreateTypeHandler createTypeHandler)
         {
-           return createTypeHandler.Handler(createTypeCommand);
+            return createTypeHandler.Handler(createTypeCommand);
         }
 
         [Route("")]
         [HttpGet]
-        public IEnumerable<Type> GetAll([FromServices] ITypeRepository typeRepository)
+        public IList<TypeViewModel> GetAll([FromServices] ITypeQueries typeQueries)
         {
-            return typeRepository.GetAll();
+            return typeQueries.GetAll().ToList();
         }
     }
 }

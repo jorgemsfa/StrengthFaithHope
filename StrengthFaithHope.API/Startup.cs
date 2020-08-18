@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StrengthFaithHope.Domain.Handlers;
 using StrengthFaithHope.Domain.Handlers.Contracts;
+using StrengthFaithHope.Domain.Queries;
 using StrengthFaithHope.Domain.Repositories;
 using StrengthFaithHope.Infra.Contexts;
 using StrengthFaithHope.Infra.Repositories;
@@ -30,12 +31,12 @@ namespace StrengthFaithHope.API
 
             services.AddTransient<IMessageRepository,MessageRepository>();
             services.AddTransient<ITypeRepository, TypeRepository>();
+            services.AddTransient<ITypeQueries, TypeQueries>();
+            services.AddTransient<IMessageQueries, MessageQueries>();
 
 
             services.AddTransient<CreateMessageHandler, CreateMessageHandler>();
             services.AddTransient<CreateTypeHandler, CreateTypeHandler>();
-
-
 
         }
 

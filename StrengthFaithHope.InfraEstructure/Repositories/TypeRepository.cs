@@ -3,6 +3,7 @@ using StrengthFaithHope.Domain.Repositories;
 using StrengthFaithHope.Infra.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Type = StrengthFaithHope.Domain.MessageContext.Type;
 
 
@@ -25,13 +26,13 @@ namespace StrengthFaithHope.Infra.Repositories
         }
 
         public IEnumerable<Type> GetAll()
-        {
+        {          
             return _dataContext.Type.AsNoTracking();
         }
 
         public Type GetById(Guid typeId)
         {
-            return _dataContext.Find<Type>(typeId);
+            return _dataContext.Type.Where(r => r.TypeId == typeId).FirstOrDefault();
         }
     }
 }

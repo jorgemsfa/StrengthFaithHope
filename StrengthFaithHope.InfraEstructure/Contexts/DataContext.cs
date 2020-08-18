@@ -15,10 +15,9 @@ namespace StrengthFaithHope.Infra.Contexts
 
         public DbSet<Type> Type { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Message>().ToTable("Message");
-
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Message>().HasOne<Type>(r=>r.Type).WithMany(g=>g.Message).HasForeignKey(r=>r.TypeId);
+        }
     }
 }

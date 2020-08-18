@@ -24,5 +24,6 @@ namespace StrengthFaithHope.Domain.MessageContext
         public Guid TypeId { get; private set; }
         public String Definicion { get; private set; }
         public String Icon { get; private set; }
+        public IEnumerable<Message> Message { get; private set; }
     }
 }

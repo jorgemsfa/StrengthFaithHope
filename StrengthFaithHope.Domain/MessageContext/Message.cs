@@ -19,11 +19,13 @@ namespace StrengthFaithHope.Domain.MessageContext
             RuleFor(message => message.Title).NotNull().WithMessage("The Title is mandatory.");
 
         }
+
         public Guid MessageId { get; private set; }
         public String Sentence { get; private set; }       
         public Guid TypeId { get; private set; }
         public Type Type { get; private set; }
         public String Title { get; private set; }
+
 
 
     }

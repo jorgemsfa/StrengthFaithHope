@@ -8,6 +8,7 @@ using StrengthFaithHope.Domain.Handlers;
 using StrengthFaithHope.Domain.MessageContext;
 using StrengthFaithHope.Domain.Queries;
 using StrengthFaithHope.Domain.Repositories;
+using StrengthFaithHope.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,9 @@ namespace StrengthFaithHope.API.Controllers
     {
         [Route("")]
         [HttpGet]
-        public IEnumerable<Message> GetAll([FromServices] IMessageRepository messageRepository)
+        public IList<MessageViewModel> GetAll([FromServices] IMessageQueries  messageQueries)
         {
-            return messageRepository.GetAll();
+            return messageQueries.GetAll();
         }
 
      
