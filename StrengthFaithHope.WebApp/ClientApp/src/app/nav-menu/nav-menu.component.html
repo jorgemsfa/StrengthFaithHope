@@ -17,10 +17,14 @@
       </button>
       <div
         class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-        [ngClass]="{ show: isExpanded }"
-      >
-       
+        [ngClass]="{ show: isExpanded }">
+
       </div>
+      <a class="navbar-brand" [routerLink]="['/message']">New
+      <span class="material-icons">
+        message
+        </span>
+      </a>
     </div>
   </nav>
 </header>
